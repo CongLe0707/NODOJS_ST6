@@ -8,7 +8,7 @@ module.exports = {
             token = req.signedCookies.token;
         } else {
             let authorizedtoken = req.headers.authorization;
-            if (!authorizedtoken.startsWith("Bearer")) {
+            if (authorizedtoken.startsWith("Bearer")) {   
                 token = authorizedtoken.split(" ")[1];
             } 
         }
@@ -26,7 +26,9 @@ module.exports = {
         }
     },
     check_authorization: function (requiredRole) {
+    
         return function (req, res, next) {
+            console.log("--------");
             let userRole = req.user.role.name;
             if (!requiredRole.includes(userRole)) {
                 next(new Error("ban khong co quyen"));

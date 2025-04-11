@@ -23,6 +23,7 @@ module.exports = {
       let roleObj = await roleSchema.findOne({
         name: role
       })
+      console.log(roleObj);
       if (roleObj) {
         let newUser = new userSchema({
           username: username,

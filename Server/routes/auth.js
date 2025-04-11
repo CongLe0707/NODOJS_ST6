@@ -17,9 +17,10 @@ let fs = require('fs')
 
 
 router.post('/signup', SignUpValidator, validate, async function (req, res, next) {
+    console.log(req.body);
     try {
         let newUser = await userController.CreateAnUser(
-            req.body.username, req.body.password, req.body.email, 'user'
+            req.body.username, req.body.password, req.body.email, req.body.role
         )
         CreateSuccessResponse(res, 200, newUser)
     } catch (error) {
