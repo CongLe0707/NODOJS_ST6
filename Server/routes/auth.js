@@ -27,6 +27,7 @@ router.post('/signup', SignUpValidator, validate, async function (req, res, next
         next(error)
     }
 });
+
 router.post('/login', LoginValidator, validate, async function (req, res, next) {
     try {
         let user_id = await userController.CheckLogin(

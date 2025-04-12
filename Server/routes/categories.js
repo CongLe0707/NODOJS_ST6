@@ -9,6 +9,7 @@ router.get('/', async function(req, res, next) {
     res.send(categories);
 });
 
+
 router.get('/:id', async function(req, res, next) {
     try {
         let category = await categorySchema.findById(req.params.id);
